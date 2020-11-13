@@ -546,7 +546,7 @@ static int virtio_gpu_get_caps(struct driver *drv, union virgl_caps *caps, int *
 	struct drm_virtgpu_get_caps cap_args = { 0 };
 
 	*caps_is_v2 = 0;
-	cap_args.addr = (unsigned long long)caps;
+	cap_args.addr = (uintptr_t)caps;
 	if (features[feat_capset_fix].enabled) {
 		*caps_is_v2 = 1;
 		cap_args.cap_set_id = 2;
@@ -702,7 +702,7 @@ static int virtio_gpu_bo_create_blob(struct driver *drv, struct bo *bo)
 	cmd[VIRGL_PIPE_RES_CREATE_BIND] = use_flags_to_bind(bo->meta.use_flags);
 	cmd[VIRGL_PIPE_RES_CREATE_DEPTH] = 1;
 
-	drm_rc_blob.cmd = (uint64_t)&cmd;
+	drm_rc_blob.cmd = (uintptr_t)&cmd;
 	drm_rc_blob.cmd_size = 4 * (VIRGL_PIPE_RES_CREATE_SIZE + 1);
 	drm_rc_blob.size = bo->meta.total_size;
 	drm_rc_blob.blob_mem = VIRTGPU_BLOB_MEM_HOST3D;

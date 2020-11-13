@@ -29,6 +29,9 @@ static int vc4_init(struct driver *drv)
 
 	drv_add_combinations(drv, texture_only_formats, ARRAY_SIZE(texture_only_formats),
 			     &LINEAR_METADATA, BO_USE_TEXTURE_MASK);
+
+	drv_modify_combination(drv, DRM_FORMAT_RGB565, &LINEAR_METADATA, BO_USE_SCANOUT);
+	
 	/*
 	 * Chrome uses DMA-buf mmap to write to YV12 buffers, which are then accessed by the
 	 * Video Encoder Accelerator (VEA). It could also support NV12 potentially in the future.

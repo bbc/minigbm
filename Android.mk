@@ -27,6 +27,7 @@ MINIGBM_SRC := \
 	tegra.c \
 	udl.c \
 	vc4.c \
+	v3d.c \
 	vgem.c \
 	virtio_gpu.c
 

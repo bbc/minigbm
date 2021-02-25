@@ -64,6 +64,9 @@ extern const struct backend backend_udl;
 #ifdef DRV_VC4
 extern const struct backend backend_vc4;
 #endif
+#ifdef DRV_V3D
+extern const struct backend backend_v3d;
+#endif
 extern const struct backend backend_vgem;
 extern const struct backend backend_virtio_gpu;
 
@@ -116,6 +119,9 @@ static const struct backend *drv_get_backend(int fd)
 		&backend_udl,
 #ifdef DRV_VC4
 		&backend_vc4,
+#endif
+#ifdef DRV_V3D
+		&backend_v3d,
 #endif
 		&backend_vgem,	   &backend_virtio_gpu,
 	};
